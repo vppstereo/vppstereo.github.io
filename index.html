@@ -1,1 +1,718 @@
-hello
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+
+<style type="text/css">
+	body {
+		font-family: 'Noto Sans', sans-serif;
+		color: #4a4a4a;
+		font-size: 1em;
+		font-weight: 400;
+		line-height: 1.5;
+		margin-left: auto;
+		margin-right: auto;
+		width: 1100px;
+	}
+
+	.title {
+		color: #363636;
+		font-size: 4rem;
+		line-height: 1.125;
+		font-weight: 200;
+		font-family: 'Google Sans', sans-serif;
+	}
+
+	.publication-title {
+		font-family: 'Google Sans', sans-serif;
+	}
+
+	h1 {
+		font-size: 40px;
+		font-weight: 500;
+	}
+
+	h2 {
+		font-size: 35px;
+		font-weight: 300;
+	}
+
+	h3 {
+		font-size: 1px;
+		font-weight: 300;
+	}
+
+	.subtitle,
+	.title {
+		word-break: break-word;
+	}
+
+	.title.is-2 {
+		font-size: 4rem;
+		font-weight: 400;
+	}
+
+	.title.is-3 {
+		font-size: 2.5rem;
+		font-weight: 400;
+	}
+
+	.content h2 {
+		font-weight: 600;
+		font-family: 'Noto Sans', sans-serif;
+		line-height: 1.125;
+	}
+
+	.disclaimerbox {
+		background-color: #eee;
+		border: 1px solid #eeeeee;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		padding: 20px;
+	}
+
+	video.header-vid {
+		height: 140px;
+		border: 1px solid rgba(0, 0, 0, 0.212);
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+
+	img.header-img {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+
+	img.rounded {
+		border: 1px solid #eeeeee;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+
+	a:link,
+	a:visited {
+		color: #2994c5;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #0e889e;
+	}
+
+	td.dl-link {
+		height: 160px;
+		text-align: center;
+		font-size: 22px;
+	}
+
+	.layered-paper-big {
+		/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+			0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The top layer shadow */
+			5px 5px 0 0px #fff,
+			/* The second layer */
+			5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The second layer shadow */
+			10px 10px 0 0px #fff,
+			/* The third layer */
+			10px 10px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The third layer shadow */
+			15px 15px 0 0px #fff,
+			/* The fourth layer */
+			15px 15px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The fourth layer shadow */
+			20px 20px 0 0px #fff,
+			/* The fifth layer */
+			20px 20px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The fifth layer shadow */
+			25px 25px 0 0px #fff,
+			/* The fifth layer */
+			25px 25px 1px 1px rgba(0, 0, 0, 0.35);
+		/* The fifth layer shadow */
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+	.paper-big {
+		/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+			0px 0px 1px 1px rgba(0, 0, 0, 0.35);
+		/* The top layer shadow */
+
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+	.button.is-dark {
+		background-color: #363636;
+		border-color: transparent;
+		color: #fff;
+	}
+
+	.button.is-rounded {
+		border-radius: 290486px;
+		padding-left: calc(1em + .25em);
+		padding-right: calc(1em + .25em);
+	}
+
+	.button.is-normal {
+		font-size: 1rem;
+	}
+
+	.button .icon,
+	.button .icon.is-large,
+	.button .icon.is-medium,
+	.button .icon.is-small {
+		height: 1.5em;
+		width: 1.5em;
+	}
+
+	.icon {
+		align-items: center;
+		display: inline-flex;
+		justify-content: center;
+		height: 1.5rem;
+		width: 1.5rem;
+	}
+
+	.button.is-normal {
+		font-size: 1rem;
+	}
+
+	.button {
+		background-color: #fff;
+		border-color: #dbdbdb;
+		border-width: 1px;
+		color: #363636;
+		cursor: pointer;
+		justify-content: center;
+		padding-bottom: calc(.5em - 1px);
+		padding-left: 1em;
+		padding-right: 1em;
+		padding-top: calc(.5em - 1px);
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	.button .icon:first-child:not(:last-child) {
+		margin-left: calc(-.5em - 1px);
+		margin-right: .25em;
+	}
+
+	element {}
+
+	.button.is-rounded {
+		border-radius: 290486px;
+		padding-left: calc(1em + .25em);
+		padding-right: calc(1em + .25em);
+	}
+
+	.button.is-normal {
+		font-size: 1rem;
+	}
+
+	.button.is-dark {
+		background-color: #363636;
+		border-color: transparent;
+		color: #fff;
+	}
+
+	.link-block a {
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	.button {
+		background-color: #fff;
+		border-color: #dbdbdb;
+		border-width: 1px;
+		color: #363636;
+		cursor: pointer;
+		justify-content: center;
+		padding-bottom: calc(.5em - 1px);
+		padding-left: 1em;
+		padding-right: 1em;
+		padding-top: calc(.5em - 1px);
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	.button,
+	.file-cta,
+	.file-name,
+	.input,
+	.pagination-ellipsis,
+	.pagination-link,
+	.pagination-next,
+	.pagination-previous,
+	.select select,
+	.textarea {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		align-items: center;
+		border: 1px solid transparent;
+		border-top-color: transparent;
+		border-top-width: 1px;
+		border-right-color: transparent;
+		border-right-width: 1px;
+		border-bottom-color: transparent;
+		border-bottom-width: 1px;
+		border-left-color: transparent;
+		border-left-width: 1px;
+		border-radius: 4px;
+		box-shadow: none;
+		display: inline-flex;
+		font-size: 1rem;
+		height: 2.5em;
+		justify-content: flex-start;
+		line-height: 1.5;
+		padding-bottom: calc(.5em - 1px);
+		padding-left: calc(.75em - 1px);
+		padding-right: calc(.75em - 1px);
+		padding-top: calc(.5em - 1px);
+		position: relative;
+		vertical-align: top;
+	}
+
+	.breadcrumb,
+	.button,
+	.delete,
+	.file,
+	.is-unselectable,
+	.modal-close,
+	.pagination-ellipsis,
+	.pagination-link,
+	.pagination-next,
+	.pagination-previous,
+	.tabs {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+
+	a {
+		color: #3273dc;
+		cursor: pointer;
+		text-decoration: none;
+	}
+
+	a {
+		color: #007bff;
+		text-decoration: none;
+		background-color: transparent;
+	}
+
+	*,
+	::after,
+	::before {
+		box-sizing: inherit;
+	}
+
+	*,
+	::before,
+	::after {
+		box-sizing: border-box;
+	}
+
+	span {
+		font-style: inherit;
+		font-weight: inherit;
+	}
+
+	.layered-paper {
+		/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+			0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The top layer shadow */
+			5px 5px 0 0px #fff,
+			/* The second layer */
+			5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The second layer shadow */
+			10px 10px 0 0px #fff,
+			/* The third layer */
+			10px 10px 1px 1px rgba(0, 0, 0, 0.35);
+		/* The third layer shadow */
+		margin-top: 5px;
+		margin-left: 10px;
+		margin-right: 30px;
+		margin-bottom: 5px;
+	}
+
+	.vert-cent {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	hr {
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+</style>
+
+<head>
+	<title>Active Stereo Without Pattern Projector</title>
+	<meta property="og:image" content="./assets/teaser_vpp_v2.png" />
+	<!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="Active Stereo Without Pattern Projector" />
+	<meta property="og:url" content="https://vppstereo.github.io/">
+	<!-- Get from Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src=""></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-75863369-6');
+	</script>
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+		</script>
+
+</head>
+
+<body>
+	<br>
+	<center>
+		<h1 class="title is-1 publication-title" style="margin-bottom: 0"><strong>Active Stereo Without Pattern
+				Projector</strong></h1>
+		<!-- <h2 class="title is-2 publication-title" style="margin-top: 0; margin-bottom: 0">3D from multi-view and sensors
+		</h2> -->
+		<br>
+		<h3 class="title is-3 publication-title" style="margin-top: 0; margin-bottom: 0">ICCV 2023 </h3>
+		<br>
+		<table align=center width=1100px>
+			<table align=center width=900px>
+				<tr>
+					<td align=center width=200px>
+						<center>
+							<span style="font-size:25px"><a href="https://bartn8.github.io/">Luca
+									Bartolomei</a><sup>1</sup></span>
+						</center>
+					</td>
+					<td align=center width=130px>
+						<center>
+							<span style="font-size:25px"><a href="https://mattpoggi.github.io/">Matteo
+									Poggi</a><sup>1</sup></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:25px"><a href="https://fabiotosi92.github.io/">Fabio
+									Tosi</a><sup>1</sup></span>
+						</center>
+					</td>
+					<td align=center width=200px>
+						<center>
+							<span style="font-size:25px"><a href="https://andreaconti.github.io/">Andrea
+									Conti</a><sup>1</sup></span>
+						</center>
+					</td>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:25px"><a
+									href="http://vision.deis.unibo.it/~smatt/Site/Home.html">Stefano
+									Mattoccia</a><sup>1</sup></span>
+						</center>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<table align=center width=750px>
+				<table align=center width=750px>
+					<tr>
+						<td align=center width=200px>
+							<center>
+								<span style="font-size:22px">University of Bologna<sup>1</sup></span>
+							</center>
+						</td>
+					</tr>
+				</table>
+
+				<!-- PDF Link. -->
+				<span class="link-block">
+					<a href="#" class="external-link button is-normal is-rounded is-dark"
+						style="background-color:#000000;">
+						<span class="icon">
+							<svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false"
+								data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 384 512" data-fa-i2svg="">
+								<path fill="currentColor"
+									d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z">
+								</path>
+							</svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+						</span>
+						<span>Paper</span>
+					</a>
+				</span>
+
+
+				<span class="link-block">
+					<a href="#" class="external-link button is-normal is-rounded is-dark"
+						style="background-color:#000000;">
+						<span class="icon" disabled>
+							<svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false"
+								data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 384 512" data-fa-i2svg="">
+								<path fill="currentColor"
+									d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z">
+								</path>
+							</svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+						</span>
+						<span>Supplement</span>
+					</a>
+				</span>
+
+				<!-- Poster Link. -->
+				<span class="link-block">
+					<a href="#" class="external-link button is-normal is-rounded is-dark"
+						style="background-color:#000000;">
+						<span class="icon">
+							<svg class="svg-inline--fa fa-palette fa-w-16" aria-hidden="true" focusable="false"
+								data-prefix="fas" data-icon="palette" role="img" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 512 512" data-fa-i2svg="">
+								<path fill="currentColor"
+									d="M204.3 5C104.9 24.4 24.8 104.3 5.2 203.4c-37 187 131.7 326.4 258.8 306.7 41.2-6.4 61.4-54.6 42.5-91.7-23.1-45.4 9.9-98.4 60.9-98.4h79.7c35.8 0 64.8-29.6 64.9-65.3C511.5 97.1 368.1-26.9 204.3 5zM96 320c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm32-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128-64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z">
+								</path>
+							</svg><!-- <i class="fas fa-palette"></i> Font Awesome fontawesome.com -->
+						</span>
+						<span>Poster</span>
+					</a>
+				</span>
+
+
+				<span class="link-block">
+					<a href="#" class="external-link button is-normal is-rounded is-dark"
+						style="background-color:#000000;">
+						<span class="icon">
+							<svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" focusable="false"
+								data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 576 512" data-fa-i2svg="">
+								<path fill="currentColor"
+									d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
+								</path>
+							</svg><!-- <i class="fab fa-youtube"></i> Font Awesome fontawesome.com -->
+						</span>
+						<span>Video</span>
+					</a>
+				</span>
+
+				<!-- Code Link. -->
+				<span class="link-block">
+					<a href="#" class="external-link button is-normal is-rounded is-dark"
+						style="background-color:#000000;">
+						<span class="icon">
+							<svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false"
+								data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 496 512" data-fa-i2svg="">
+								<path fill="currentColor"
+									d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+								</path>
+							</svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+						</span>
+						<span>Code</span>
+					</a>
+				</span>
+			</table>
+	</center>
+	<br>
+	<center>
+		<table align=center width=850px>
+			<tr>
+				<td width=260px>
+					<center>
+						<img class="round" style="width:1000px" src="./assets/teaser_vpp_v2.png" />
+					</center>
+				</td>
+			</tr>
+		</table>
+		<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+			<tr>
+				<td>
+					<p style="text-align: justify;">
+						<strong>Virtual Pattern Projection for deep stereo.</strong> Either in challenging outdoor (top) or indoor (bottom) environments (a), a stereo network such as PSMNet often struggles (b). 
+						By projecting a virtual pattern on images (c), the very same network dramatically improves its accuracy (d). 
+						By further training the model to deal with the augmented images (e) further improves the results.
+					</p>
+				</td>
+			</tr>
+		</table>
+	</center>
+
+	<br>
+	<br>
+	<hr>
+
+	<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+		<center>
+			<h1>Abstract</h1>
+		</center>
+		<tr>
+			<td>
+				<p style="text-align: justify;">
+					<i>""</i>
+				</p>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<hr>
+
+	<center>
+		<h1>Method</h1>
+	</center>
+	<table align=center width=420px>
+		<center>
+			<tr>
+				<td>
+				</td>
+			</tr>
+		</center>
+	</table>
+	<table align=center width=800px>
+		<tr>
+			<td align=center width=800px>
+				<center>
+			<td><img class="round" style="width:1100px" src="" /></td>
+			</center>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+
+
+	<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+		<center>
+			<tr>
+				<td>
+					<h2> 1 - Lorem</h2>
+					<ul>
+						<li>
+							<p style="text-align: justify;"></p>
+						</li>
+						<li>
+							<p style="text-align: justify;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+						</li>
+						<li>
+							<p style="text-align: justify;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+						</li>
+					</ul>
+
+					<h2> 2 - Ipsum</h2>
+					<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+					<ul>
+						<li>
+							<p style="text-align: justify;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+						</li>
+						<li>
+							<p style="text-align: justify;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+						</li>
+					</ul>
+
+					T"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+				</td>
+			</tr>
+		</center>
+	</table>
+
+	<br>
+	<br>
+	<hr>
+
+
+
+	<!-- Video section -->
+	<center>
+		<h1>Youtube Video</h1>
+	</center>
+	<table align=center width=1075px>
+		<tr>
+			<td align=center width=1075px>
+				<center>
+					<iframe width="1075px" height="650" src="#" frameborder="0"
+						allowfullscreen></iframe>
+				</center>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+	<br>
+	<hr>
+
+	<center>
+		<h1>Qualitative Results</h1>
+	</center>
+
+	<table align=center width=800px>
+		<tr>
+			<td align=center width=800px>
+				<center>
+			<td><img class="round" style="width:1100px" src="" /></td>
+			</center>
+			</td>
+		</tr>
+	</table>
+
+	<table align=center width=1075px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+		<tr>
+			<td>
+				<p style="text-align: justify;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+
+	<table align=center width=800px>
+		<tr>
+			<td align=center width=800px>
+				<center>
+			<td><img class="round" style="width:1100px" src="" /></td>
+			</center>
+			</td>
+		</tr>
+	</table>
+
+	<table align=center width=1075px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+		<tr>
+			<td>
+				<p style="text-align: justify;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+			</td>
+		</tr>
+	</table>
+
+
+	<br>
+	<hr>
+
+	<div class="container is-max-desktop content">
+		<h2 class="bibtex" style="font-size:32px; font-weight:400;">BibTeX</h2>
+		<pre style="background-color: #f5f5f5; color: #4a4a4a; font-size: 1.5em; overflow-x: auto;"><code >@inproceedings{Bartolomei_2023_ICCV,
+		  author    = {Bartolomei, Luca and Poggi, Matteo and Tosi, Fabio and Conti, Andrea and Mattoccia, Stefano},
+		  title     = {Active Stereo Without Pattern Projector},
+		  booktitle = {International Conference on Computer Vision (ICCV)},
+		  month     = {October},
+		  year      = {2023}
+	  }</code></pre>
+	</div>
+
+
+	<br>
+	<br>
+	<hr>
+</body>
+
+</html>
