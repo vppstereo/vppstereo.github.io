@@ -630,11 +630,15 @@
 					<p style="text-align: justify;">Given a vanilla stereo pair of images from a stereo camera and sparse depth points from a depth sensor, our framework virtually projects depth seeds to stereo pair according to system geometry and a pattering strategy.</p>
 					<p style="text-align: justify;">Augmented stereo pair is less affected by ambiguous regions and makes stereo matcher work easier.</p>
 					<p style="text-align: justify;">Given that our framework alters only stereo pair, any stereo matcher could benefit from it.</p>
-					<p style="text-align: justify;">We propose different pattering strategies to enhance distinctiviness and high corrispondance, a patch-based approach to increase pattern visibility, a pattern blended with original content to deal with adversial issues with neural networks, a solution to ambiguous projection on occluded points and consequentially an heuristic to classify occluded sparse points. In particular:</p>
+					<p style="text-align: justify;">We propose different pattering strategies to enhance distinctiveness and high correspondence, a patch-based approach to increase pattern visibility, alpha-blending with original content to deal with adversial issues with neural networks, a solution to ambiguous projection on occluded points and consequentially an heuristic to classify occluded sparse points. In particular:</p>
 					
 					<ul>
 						<li>
-							<p style="text-align: justify;"></p>
+							<p style="text-align: justify;">We propose two different pattering strategies: i) random pattering strategy and ii) distinctiveness pattering strategy based on histogram analysis.</p>
+							<ol type="i">
+								<li>Our random strategy is faster than second proposed strategy, but do not guarantee distinctiveness: for each known pair of corresponding points a random pattern is applied in each view, sampling from an uniform distribution.</li>
+								<li>Our histogram strategy performs an analysis in the neighbourood of each corresponding point to guarantee local distinctiveness.</li>
+							</ol>
 						</li>
 					</ul>
 
