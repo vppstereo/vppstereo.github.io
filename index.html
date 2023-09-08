@@ -441,7 +441,7 @@
 
 				<!-- PDF Link. -->
 				<span class="link-block">
-					<a href="#" class="external-link button is-normal is-rounded is-dark"
+					<a href="assets/paper.pdf" class="external-link button is-normal is-rounded is-dark"
 						style="background-color:#000000;">
 						<span class="icon">
 							<svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false"
@@ -458,7 +458,7 @@
 
 
 				<span class="link-block">
-					<a href="#" class="external-link button is-normal is-rounded is-dark"
+					<a href="assets/paper-supp.pdf" class="external-link button is-normal is-rounded is-dark"
 						style="background-color:#000000;">
 						<span class="icon" disabled>
 							<svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false"
@@ -475,7 +475,7 @@
 
 				<!-- Poster Link. -->
 				<span class="link-block">
-					<a href="#" class="external-link button is-normal is-rounded is-dark"
+					<a href="assets/poster.pdf" class="external-link button is-normal is-rounded is-dark"
 						style="background-color:#000000;">
 						<span class="icon">
 							<svg class="svg-inline--fa fa-palette fa-w-16" aria-hidden="true" focusable="false"
@@ -509,7 +509,7 @@
 
 				<!-- Code Link. -->
 				<span class="link-block">
-					<a href="#" class="external-link button is-normal is-rounded is-dark"
+					<a href="https://github.com/bartn8/vppstereo/" class="external-link button is-normal is-rounded is-dark"
 						style="background-color:#000000;">
 						<span class="icon">
 							<svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false"
@@ -597,31 +597,47 @@
 		<center>
 			<tr>
 				<td>
-					<h2> 1 - Lorem</h2>
+					<h2> 1 - Problems</h2>
+					<ul>
+						<li>
+							<p style="text-align: justify;">Stereo networks suffer when dealing with uniform areas and unseen scenarios (i.e., domain shifts)</p>
+						</li>
+						<li>
+							<p style="text-align: justify;">Active stereo uses pattern projection, which is not always feasible (e.g., outdoor, long-range)</p>
+						</li>
+					</ul>
+
+					<h2> 2 - Proposal</h2>
+					<ul>
+						<li>
+							<p style="text-align: justify;">We project a virtual pattern (VPP) on stereo image pair according to sparse depth measurements given by a depth sensor</p>
+						</li>
+						<li>
+							<p style="text-align: justify;">This virtual active stereo setup works in any environment if coupled with an appropriate depth sensor</p>
+						</li>
+						<li>
+							<p style="text-align: justify;">Even with few points (e.g., 1% of the whole image), our proposal outperforms SOTA fusion methods​</p>
+						</li>
+						<li>
+							<p style="text-align: justify;">When dealing with networks trained on synthetic data, it improves accuracy and shows an ability to tackle domain shift issues </p>
+						</li>
+					</ul>
+
+					<h2> 3 - Virtual Pattern Projection</h2>
+					
+					<img class="round" style="width:1000px" src="./assets/framework.jpg" />
+
+					<p style="text-align: justify;">Given a vanilla stereo pair of images from a stereo camera and sparse depth points from a depth sensor, our framework virtually projects depth seeds to stereo pair according to system geometry and a pattering strategy.</p>
+					<p style="text-align: justify;">Augmented stereo pair is less affected by ambiguous regions and makes stereo matcher work easier.</p>
+					<p style="text-align: justify;">Given that our framework alters only stereo pair, any stereo matcher could benefit from it.</p>
+					<p style="text-align: justify;">We propose different pattering strategies to enhance distinctiviness and high corrispondance, a patch-based approach to increase pattern visibility, a pattern blended with original content to deal with adversial issues with neural networks, a solution to ambiguous projection on occluded points and consequentially an heuristic to classify occluded sparse points. In particular:</p>
+					
 					<ul>
 						<li>
 							<p style="text-align: justify;"></p>
 						</li>
-						<li>
-							<p style="text-align: justify;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-						</li>
-						<li>
-							<p style="text-align: justify;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-						</li>
 					</ul>
 
-					<h2> 2 - Ipsum</h2>
-					<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-					<ul>
-						<li>
-							<p style="text-align: justify;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-						</li>
-						<li>
-							<p style="text-align: justify;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-						</li>
-					</ul>
-
-					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 				</td>
 			</tr>
 		</center>
@@ -641,8 +657,9 @@
 		<tr>
 			<td align=center width=1075px>
 				<center>
-					<iframe width="1075px" height="650" src="#" frameborder="0"
-						allowfullscreen></iframe>
+					<!--<iframe width="1075px" height="650" src="#" frameborder="0"
+						allowfullscreen></iframe>-->
+					<img src="assets/slide_title.jpg" width="1075px" />
 				</center>
 			</td>
 		</tr>
