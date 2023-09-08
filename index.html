@@ -598,47 +598,99 @@
 			<tr>
 				<td>
 					<h2> 1 - Problems</h2>
-					<ul>
+					<ol>
 						<li>
 							<p style="text-align: justify;">Stereo networks suffer when dealing with uniform areas and unseen scenarios (i.e., domain shifts)</p>
+							<center>
+								<img src="assets/vanilla_midd21.png" width="400px" />
+								<img src="assets/vanilla_midd21_cfnet.png" width="400px" />
+							</center>
 						</li>
 						<li>
 							<p style="text-align: justify;">Active stereo uses pattern projection, which is not always feasible (e.g., outdoor, long-range)</p>
+							<center>
+								<img src="assets/active_pattern.gif" width="400px" />
+							</center>
 						</li>
-					</ul>
+					</ol>
 
 					<h2> 2 - Proposal</h2>
-					<ul>
+					<ol>
 						<li>
 							<p style="text-align: justify;">We project a virtual pattern (VPP) on stereo image pair according to sparse depth measurements given by a depth sensor</p>
+							<center>
+								<img src="assets/vpp_midd21.png" width="400px" />
+								<img src="assets/vpp_midd21_cfnet.png" width="400px" />
+							</center>
 						</li>
 						<li>
 							<p style="text-align: justify;">This virtual active stereo setup works in any environment if coupled with an appropriate depth sensor</p>
+							<center>
+								<img src="assets/vanilla_kitti.png" width="1000px" />
+								<img src="assets/vpp_kitti.png" width="1000px" />
+							</center>
 						</li>
 						<li>
 							<p style="text-align: justify;">Even with few points (e.g., 1% of the whole image), our proposal outperforms SOTA fusion methods​</p>
 						</li>
 						<li>
 							<p style="text-align: justify;">When dealing with networks trained on synthetic data, it improves accuracy and shows an ability to tackle domain shift issues </p>
+							<center>
+								<img src="assets/vanilla_midd21_cfnet.png" width="250px" />
+								<img src="assets/vanilla_midd21_cfnet_ft.png" width="250px" />
+								<img src="assets/vpp_midd21_cfnet.png" width="250px" />
+							</center>
+							<center>
+								<img src="assets/midd21_gt.png" width="250px" />
+							</center>
 						</li>
-					</ul>
+					</ol>
 
 					<h2> 3 - Virtual Pattern Projection</h2>
 					
 					<img class="round" style="width:1000px" src="./assets/framework.jpg" />
 
 					<p style="text-align: justify;">Given a vanilla stereo pair of images from a stereo camera and sparse depth points from a depth sensor, our framework virtually projects depth seeds to stereo pair according to system geometry and a pattering strategy.</p>
-					<p style="text-align: justify;">Augmented stereo pair is less affected by ambiguous regions and makes stereo matcher work easier.</p>
-					<p style="text-align: justify;">Given that our framework alters only stereo pair, any stereo matcher could benefit from it.</p>
+
+					$$I_L(x,y) \leftarrow \mathcal{A}(x,x',y)$$
+					$$I_R(x',y) \leftarrow \mathcal{A}(x,x',y)$$
+
+					<p style="text-align: justify;">Augmented stereo pair is less affected by ambiguous regions and makes stereo matcher work easier. Given that our framework alters only stereo pair, any stereo matcher could benefit from it. Since disparity seed could have subpixel accuracy, we use weighted splatting to avoid loss of information.</p>
+
+					$$I_R(\lfloor x'\rfloor,y) \leftarrow \beta I_R(\lfloor x'\rfloor,y) + (1-\beta) \mathcal{A}(x,x',y)$$
+					$$I_R(\lceil x'\rceil,y) \leftarrow (1-\beta) I_R(\lceil x'\rceil,y) + \beta \mathcal{A}(x,x',y)$$
+					$$\beta = x'-\lfloor x'\rfloor$$
+
 					<p style="text-align: justify;">We propose different pattering strategies to enhance distinctiveness and high correspondence, a patch-based approach to increase pattern visibility, alpha-blending with original content to deal with adversial issues with neural networks, a solution to ambiguous projection on occluded points and consequentially an heuristic to classify occluded sparse points. In particular:</p>
 					
 					<ul>
 						<li>
 							<p style="text-align: justify;">We propose two different pattering strategies: i) random pattering strategy and ii) distinctiveness pattering strategy based on histogram analysis.</p>
 							<ol type="i">
-								<li>Our random strategy is faster than second proposed strategy, but do not guarantee distinctiveness: for each known pair of corresponding points a random pattern is applied in each view, sampling from an uniform distribution.</li>
-								<li>Our histogram strategy performs an analysis in the neighbourood of each corresponding point to guarantee local distinctiveness.</li>
+								<li>
+									<p style="text-align: justify;">Our random strategy is faster than second proposed strategy, but do not guarantee distinctiveness: for each known pair of corresponding points a random pattern is applied in each view, sampling from an uniform distribution.</p>
+									$$\mathcal{A}(x,x',y)\sim\mathcal{U}(0,255)$$
+								</li>
+								<li>
+									<p style="text-align: justify;">Our histogram strategy performs an analysis in the neighbourood of each corresponding point to guarantee local distinctiveness.
+										For $(x,y)$ in the reference image, we consider two windows of length $L$ centered on it and on $(x',y)$ in the target image. Then, the histograms computed over the two windows are summed up and the operator $\mathcal{A}(x,x',y)$ picks the color maximizing the distance from any other color in the histogram $\text{hdist}(i)$, with $\text{hdist}(i)$ returning the minimum distance from a filled bin in the sum histogram $\mathcal{H}$</p>
+									$$\text{hdist}(i) =  \big\{\min\{ |i-i_l|,\,|i-i_r| \},i_l\in[0,i[:\mathcal{H}(i_l)>0,i_r\in]i,255]:\mathcal{H}(i_r)>0 \big\}$$
+								</li>
 							</ol>
+						</li>
+						<li>
+							<p style="text-align: justify;">Instead of projecting in two single corresponding pixels, a patch-based approach simply assume the same disparity value also for neighbour pixels.</p>
+							<center>
+								<img src="assets/patchbased.png" width="250px"/>
+							</center>
+						</li>
+						<li>
+							<p style="text-align: justify;">A virtual pattern might hinder a deep stereo model not used to deal with it. Thus, we combine the original image content with the virtual pattern through alpha-blending.</p>
+							$$I_L(x,y) \leftarrow (1-\alpha) I_L(x,y) + \alpha \mathcal{A}(x,x',y)$$
+							$$I_R(x',y) \leftarrow (1-\alpha) I_R(x',y) + \alpha \mathcal{A}(x,x',y)$$
+						</li>
+						<li>
+							<p style="text-align: justify;">Occlusions naturally occurs in stereo setups. Since our method could potentially virtually sparse </p>
 						</li>
 					</ul>
 
