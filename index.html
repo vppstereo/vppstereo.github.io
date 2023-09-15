@@ -375,9 +375,15 @@
 
 		gtag('config', 'UA-75863369-6');
 	</script>
-	<script type="text/javascript" id="MathJax-script" async
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	<script type="text/javascript"
+  		src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+	<!-- <script type="text/javascript" id="MathJax-script" async
 		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-		</script>
+	</script> -->
 
 </head>
 
@@ -580,7 +586,7 @@
 			</tr>
 		</center>
 	</table>
-	<table align=center width=800px>
+	<!-- <table align=center width=800px>
 		<tr>
 			<td align=center width=800px>
 				<center>
@@ -588,7 +594,7 @@
 			</center>
 			</td>
 		</tr>
-	</table>
+	</table> -->
 
 	<br>
 
@@ -707,7 +713,7 @@
 
 	<!-- Video section -->
 	<center>
-		<h1>Youtube Video</h1>
+		<h1>Video</h1>
 	</center>
 	<table align=center width=1075px>
 		<tr>
@@ -715,7 +721,11 @@
 				<center>
 					<!--<iframe width="1075px" height="650" src="#" frameborder="0"
 						allowfullscreen></iframe>-->
-					<img src="assets/slide_title.jpg" width="1075px" />
+					<!--<img src="assets/slide_title.jpg" width="1075px" />-->
+					<video width="1075px" controls>
+						<source src="assets/video.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
 				</center>
 			</td>
 		</tr>
