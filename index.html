@@ -606,50 +606,130 @@
 					<h2> 1 - Problems</h2>
 					<ol>
 						<li>
-							<p style="text-align: justify;">Stereo networks suffer when dealing with uniform areas and unseen scenarios (i.e., domain shifts)</p>
+							<p style="text-align: justify;">Given a pair of stereo images, stereo algorithms try to resolve the so called "correspondence problem".
+								This problem is not always easy: uniform areas such as the wall shown in the figure make the problem ambiguous.
+								Furthermore, given learning nature of stereo networks, they suffer when dealing with unseen scenarios.
+								This latter problem is also called domain shift problem.</p>
 							<center>
-								<img src="assets/vanilla_midd21.png" width="400px" />
-								<img src="assets/vanilla_midd21_cfnet.png" width="400px" />
+								<img src="assets/vanilla_midd21.png" width="495px" />
+								<img src="assets/vanilla_midd21_cfnet.png" width="495px" />
 							</center>
+							<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+								<tr>
+									<td>
+										<p style="text-align: justify;">
+											<strong>Performance on uniform areas.</strong> Even recent stereo network [1] struggle with uniform areas.
+										</p>
+									</td>
+								</tr>
+							</table>
 						</li>
 						<li>
-							<p style="text-align: justify;">Active stereo uses pattern projection, which is not always feasible (e.g., outdoor, long-range)</p>
+							<p style="text-align: justify;">
+								Active stereo deal with ambiguous regions using a physical pattern projector which aims to ease correspondences.
+								However, a pattern projector is not feasible in outdoor scenarios where ambient light cancel out the projected pattern.
+								Furthermore, active light decreases proportionally to the square of the distance: consequentially active stereo cannot deal with long distances.
+							</p>
 							<center>
-								<img src="assets/active_pattern.gif" width="400px" />
+								<img src="assets/active_pattern.gif" width="1000px" />
 							</center>
+							<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+								<tr>
+									<td>
+										<p style="text-align: justify;">
+											<strong>Performance of active pattern.</strong> Even in a indoor scenario, active light decreases proportionally to the square of the distance. As soon as we move in an external environment, the projected light is dimmed by the external light.
+										</p>
+									</td>
+								</tr>
+							</table>
 						</li>
 					</ol>
 
 					<h2> 2 - Proposal</h2>
 					<ol>
 						<li>
-							<p style="text-align: justify;">We project a virtual pattern (VPP) on stereo image pair according to sparse depth measurements given by a depth sensor</p>
+							<!-- <p style="text-align: justify;">We project a virtual pattern (VPP) on stereo image pair according to sparse depth measurements given by a depth sensor</p> -->
+							<p style="text-align: justify;">
+								Inspired by active stereo, our technique, dubbed as <strong>VPP</strong>, virtually project a pattern into stereo image pair according to sparse depth measurements.
+								We assume a calibrated setup composed by stereo camera and a depth sensor appropriate for the final environment.
+							</p>
 							<center>
-								<img src="assets/vpp_midd21.png" width="400px" />
-								<img src="assets/vpp_midd21_cfnet.png" width="400px" />
+								<img src="assets/vpp_midd21.png" width="495px" />
+								<img src="assets/vpp_midd21_cfnet.png" width="495px" />
 							</center>
-						</li>
-						<li>
-							<p style="text-align: justify;">This virtual active stereo setup works in any environment if coupled with an appropriate depth sensor</p>
+							<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+								<tr>
+									<td>
+										<p style="text-align: justify;">
+											<strong>Potential of our proposal.</strong> 
+											Previous shown network [1], even trained on synthetic data, dramatically improves its accuracy when coupled with our framework, even with few sparse points.
+										</p>
+									</td>
+								</tr>
+							</table>
+							<br>
 							<center>
 								<img src="assets/vanilla_kitti.png" width="1000px" />
 								<img src="assets/vpp_kitti.png" width="1000px" />
 							</center>
+							<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+								<tr>
+									<td>
+										<p style="text-align: justify;">
+											<strong>Appropriate depth sensor choice.</strong> 
+											LiDAR sensor is well suited for outdoor environments.
+										</p>
+									</td>
+								</tr>
+							</table>
 						</li>
+						<!-- <li>
+							<p style="text-align: justify;">This virtual active stereo setup works in any environment if coupled with an appropriate depth sensor</p>
+						</li> -->
 						<li>
-							<p style="text-align: justify;">Even with few points (e.g., 1% of the whole image), our proposal outperforms SOTA fusion methods​</p>
+							<!-- <p style="text-align: justify;">Even with few points (e.g., 1% of the whole image), our proposal outperforms SOTA fusion methods​</p> -->
+							<p style="text-align: justify;">
+								Our proposal outperforms state-of-the-art fusion methods even with few depth points such as 1% of the whole image.
+								Finally, as shown in the figure, virtual pattern reduce domain shift issue without requiring an additional training procedure.
+							</p>
+							<center>
+								<img src="assets/vanilla_midd21_cfnet.png" width="330px" />
+								<img src="assets/vanilla_midd21_cfnet_ft.png" width="330px" />
+								<img src="assets/vpp_midd21_cfnet.png" width="330px" />
+							</center>
+							<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em; text-align: center; ">
+								<tr>
+									<td>(A)</td>
+									<td>(B)</td>
+									<td>(C)</td>
+								</tr>
+							</table>
+							<br>
+							<center>
+								<img src="assets/midd21_gt.png" width="330px" />
+							</center>
+							<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em; text-align: center; ">
+								<tr>
+									<td>(D)</td>
+								</tr>
+							</table>
+							<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+								<tr>
+									<td>
+										<p style="text-align: justify;">
+											<strong>Appropriate depth sensor choice.</strong> 
+											Previous shown network [1] trained on synthetic data struggle (A) when dealing on new environment.
+											Fine tuning the network in final scenario (B) improves accuracy but require annotated data. 
+											Using our framework in combination with [1] shows an ability to tackle domain shift issues (C), even with low amount (5%) of  sparse points.
+											Last figure (D) shows ground-truth disparity map.
+										</p>
+									</td>
+								</tr>
+							</table>
 						</li>
-						<li>
+						<!-- <li>
 							<p style="text-align: justify;">When dealing with networks trained on synthetic data, it improves accuracy and shows an ability to tackle domain shift issues </p>
-							<center>
-								<img src="assets/vanilla_midd21_cfnet.png" width="250px" />
-								<img src="assets/vanilla_midd21_cfnet_ft.png" width="250px" />
-								<img src="assets/vpp_midd21_cfnet.png" width="250px" />
-							</center>
-							<center>
-								<img src="assets/midd21_gt.png" width="250px" />
-							</center>
-						</li>
+						</li> -->
 					</ol>
 
 					<h2> 3 - Virtual Pattern Projection</h2>
