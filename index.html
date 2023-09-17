@@ -498,7 +498,7 @@
 
 
 				<span class="link-block">
-					<a href="#" class="external-link button is-normal is-rounded is-dark"
+					<a href="#myvideo" class="external-link button is-normal is-rounded is-dark"
 						style="background-color:#000000;">
 						<span class="icon">
 							<svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" focusable="false"
@@ -618,7 +618,7 @@
 								<tr>
 									<td>
 										<p style="text-align: justify;">
-											<strong>Performance on uniform areas.</strong> Even recent stereo network [1] struggle with uniform areas.
+											<strong>Performance on uniform areas.</strong> Even <a href="https://github.com/gallenszl/CFNet">recent stereo network</a> struggle with uniform areas.
 										</p>
 									</td>
 								</tr>
@@ -644,7 +644,10 @@
 							</table>
 						</li>
 					</ol>
-
+				</td>
+			</tr>
+			<tr>
+				<td>
 					<h2> 2 - Proposal</h2>
 					<ol>
 						<li>
@@ -662,7 +665,7 @@
 									<td>
 										<p style="text-align: justify;">
 											<strong>Potential of our proposal.</strong> 
-											Previous shown network [1], even trained on synthetic data, dramatically improves its accuracy when coupled with our framework, even with few sparse points.
+											<a href="https://github.com/gallenszl/CFNet">Previous shown network</a>, even trained on synthetic data, dramatically improves its accuracy when coupled with our framework, even with few sparse points.
 										</p>
 									</td>
 								</tr>
@@ -718,9 +721,9 @@
 									<td>
 										<p style="text-align: justify;">
 											<strong>Appropriate depth sensor choice.</strong> 
-											Previous shown network [1] trained on synthetic data struggle (A) when dealing on new environment.
+											<a href="https://github.com/gallenszl/CFNet">Previous shown network</a> trained on synthetic data struggle (A) when dealing on new environment.
 											Fine tuning the network in final scenario (B) improves accuracy but require annotated data. 
-											Using our framework in combination with [1] shows an ability to tackle domain shift issues (C), even with low amount (5%) of  sparse points.
+											Using our framework in combination with <a href="https://github.com/gallenszl/CFNet">CFNet</a> shows an ability to tackle domain shift issues (C), even with low amount (5%) of  sparse points.
 											Last figure (D) shows ground-truth disparity map.
 										</p>
 									</td>
@@ -731,15 +734,37 @@
 							<p style="text-align: justify;">When dealing with networks trained on synthetic data, it improves accuracy and shows an ability to tackle domain shift issues </p>
 						</li> -->
 					</ol>
-
+				</td>
+			</tr>
+			<tr>
+				<td>
 					<h2> 3 - Virtual Pattern Projection</h2>
 					
-					<img class="round" style="width:1000px" src="./assets/framework.jpg" />
+					<center>
+						<img class="round" style="width:1000px" src="./assets/framework.jpg" />
+					</center>
+					<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+						<tr>
+							<td>
+								<p style="text-align: justify;">
+									<strong>Framework overview.</strong> 
+									Given a vanilla stereo pair of images from a stereo camera and sparse depth points from a depth sensor, our framework virtually projects depth seeds to stereo pair according to system geometry and a pattering strategy.
+								</p>
+							</td>
+						</tr>
+					</table>
 
-					<p style="text-align: justify;">Given a vanilla stereo pair of images from a stereo camera and sparse depth points from a depth sensor, our framework virtually projects depth seeds to stereo pair according to system geometry and a pattering strategy.</p>
+					<p style="text-align: justify;">
+						As for all fusion methods, our proposal relies on sparse depth seeds but, differentially from them, we inject sparse points directly into images using a virtual pattern.
+						For each known point, we convert depth into disparity then we apply a virtual pattern in each stereo image accordingly to a pattering strategy.
+					</p>
 
 					$$I_L(x,y) \leftarrow \mathcal{A}(x,x',y)$$
 					$$I_R(x',y) \leftarrow \mathcal{A}(x,x',y)$$
+
+					<p style="text-align: justify;">
+						Our method do not require any change or assumption in the stereo matcher: we assume it to be a black-box model that requires in input a pair of rectified stereo images and produce a disparity map.
+					</p>
 
 					<p style="text-align: justify;">Augmented stereo pair is less affected by ambiguous regions and makes stereo matcher work easier. Given that our framework alters only stereo pair, any stereo matcher could benefit from it. Since disparity seed could have subpixel accuracy, we use weighted splatting to avoid loss of information.</p>
 
@@ -776,7 +801,43 @@
 							$$I_R(x',y) \leftarrow (1-\alpha) I_R(x',y) + \alpha \mathcal{A}(x,x',y)$$
 						</li>
 						<li>
-							<p style="text-align: justify;">Occlusions naturally occurs in stereo setups. Since our method could potentially virtually sparse </p>
+							<p style="text-align: justify;">
+								Occlusions are an intrinsic product of the stereo system as each view see the scene in a different perspective.
+								In particular, known depth seeds that are visible in reference view, but occluded in target view could lead to ambiguities.
+							</p>
+							<center>
+								<img class="round" style="width:750px" src="./assets/occlusion_example.jpg" />
+							</center>
+							<p style="text-align: justify;">
+								In this example, known point P is virtually projected accordingly to a pattering strategy.
+								However, as P is occluded in target view, the virtual projection covers original foreground content Q. Consequentially, foreground point has no longer a clear match.
+								If we can classify correctly P as occluded, we can exploit the potential of our proposal.
+								Instead of projecting a pattern that would cover foreground content, we can virtually project target content of Q into reference pixel of P.
+								This solution ease the correspondence for P and do not interfere with foreground pixel.
+								We propose a simple heuristic to classify occluded sparse disparity points.
+							</p>
+							<center>
+								<img class="round" style="width:500px" src="./assets/occlusion_example2.jpg" />
+							</center>
+							<p style="text-align: justify;">
+								Considering the target view, it assume at least one foreground sparse point in the neighborhood of the occluded sparse point.
+								In this example P and Q are known overlapping points in target view, while in reference view they are distinct points.
+								We aim to classify P as occluded.
+							</p>
+							<center>
+								<img class="round" style="width:900px" src="./assets/occlusion_example3.jpg" />
+							</center>
+							<p style="text-align: justify;">
+								Firstly, given a sparse disparity map obtained using depth sensor, we warp each point at coordinate $(x, y)$ into an image-like grid $W$ at coordinate $(x',y)$.
+								In this representation sparse points are seen from target view perspective: foreground and occluded points are now closer to each other.
+								Each valid sparse point $W(x_o,y_o)$ is classified as occluded if the following inequality holds for at least one neighbor $W(x,y)$ within a 2D window of size $r_x \times r_y$.
+							</p>
+							$$ W(x,y)-W(x_o,y_o) - \lambda (\gamma\lvert x-x_o \rvert + (1-\gamma) \lvert y-y_o \rvert ) > t$$
+							<p style="text-align: justify;">
+								This inequality simply threshold difference between disparity of two points and weight it accordingly to coordinate distance.
+								$\lambda$, $t$ and $\gamma$ are parameters that have to be tune.
+								Finally, points classified as occluded are warped back to obtain an occlusion mask.
+							</p>
 						</li>
 					</ul>
 
@@ -802,7 +863,7 @@
 					<!--<iframe width="1075px" height="650" src="#" frameborder="0"
 						allowfullscreen></iframe>-->
 					<!--<img src="assets/slide_title.jpg" width="1075px" />-->
-					<video width="1075px" controls>
+					<video id="myvideo" width="1075px" controls>
 						<source src="assets/video.mp4" type="video/mp4">
 						Your browser does not support the video tag.
 					</video>
@@ -816,45 +877,55 @@
 	<hr>
 
 	<center>
-		<h1>Qualitative Results</h1>
+		<h1>Experimental Results</h1>
 	</center>
 
-	<table align=center width=800px>
-		<tr>
-			<td align=center width=800px>
-				<center>
-			<td><img class="round" style="width:1100px" src="" /></td>
-			</center>
-			</td>
-		</tr>
-	</table>
+	<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+		<center>
+			<tr>
+				<td>
+					<h2>Performance versus Competitors</h2>
+					<center>
+						<img src="assets/curva_densita_psmnet_final.png" width="1000px"/>
+						<img src="assets/curva_densita_raft_final.png" width="1000px"/>
+					</center>
+					<p style="text-align: justify;">
+						Plots show the error rate on Middlebury 2014 training split, varying density of sparse hint points from 0% to 5%.
+						We compare two stereo networks together with our VPP framework against:
+					</p>
+					<ul>
+						<li>The very same two networks in conjunction with Guided Stereo Matching framework</li>
+						<li>LidarStereoNet</li>
+						<li>CCVNorm</li>
+					</ul>
 
-	<table align=center width=1075px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
-		<tr>
-			<td>
-				<p style="text-align: justify;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-			</td>
-		</tr>
-	</table>
-
-	<br>
-
-	<table align=center width=800px>
-		<tr>
-			<td align=center width=800px>
-				<center>
-			<td><img class="round" style="width:1100px" src="" /></td>
-			</center>
-			</td>
-		</tr>
-	</table>
-
-	<table align=center width=1075px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
-		<tr>
-			<td>
-				<p style="text-align: justify;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-			</td>
-		</tr>
+					<p style="text-align: justify;">
+						As shown in the figures, VPP generally reaches almost optimal performance with only 1% depth density.
+						Except few cases in the training configurations with some higher density, VPP achieves much lower error rates.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h2>VPP with off-the-shelf networks</h2>
+					<center>
+						<img src="assets/plots.png" width="1000px"/>
+					</center>
+					<p style="text-align: justify;">
+						These last plots show the effectiveness of our technique using off-the-shelf networks  (i.e., <a href="https://github.com/gengshan-y/high-res-stereo">HSMNet</a>, <a href="https://github.com/gallenszl/CFNet">CFNet</a>, <a href="https://github.com/megvii-research/CREStereo">CREStereo</a>, <a href="https://github.com/princeton-vl/RAFT-Stereo">RAFT-Stereo</a>) on four different datasets:
+					</p>
+					<ul>
+						<li><a href="https://vision.middlebury.edu/stereo/data/scenes2014/">Middlebury 2014</a> training split (error rate > 2)</li>
+						<li><a href="https://vision.middlebury.edu/stereo/data/scenes2021/">Middlebury 2021</a> (error rate > 2)</li>
+						<li><a href="https://www.eth3d.net/">ETH3D</a> (error rate > 1)</li>
+						<li><a href="https://www.cvlibs.net/datasets/kitti/">KITTI</a> 142 Split (error rate > 3)</li>
+					</ul>
+					<p style="text-align: justify;">
+						Even without any additional training, our framework boost accuracy of any model with rare exceptions.
+					</p>
+				</td>
+			</tr>
+		</center>
 	</table>
 
 
