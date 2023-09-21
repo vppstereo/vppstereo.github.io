@@ -821,7 +821,7 @@
 								<img class="round" style="width:500px" src="./assets/occlusion_example2.jpg" />
 							</center>
 							<p style="text-align: justify;">
-								Considering the target view, it assume at least one foreground sparse point in the neighborhood of the occluded sparse point.
+								Considering the target view, it assumes at least one foreground sparse point in the neighborhood of the occluded sparse point.
 								In this example P and Q are known overlapping points in target view, while in reference view they are distinct points.
 								We aim to classify P as occluded.
 							</p>
@@ -836,7 +836,7 @@
 							$$ W(x,y)-W(x_o,y_o) - \lambda (\gamma\lvert x-x_o \rvert + (1-\gamma) \lvert y-y_o \rvert ) > t$$
 							<p style="text-align: justify;">
 								This inequality simply threshold difference between disparity of two points and weight it accordingly to coordinate distance.
-								$\lambda$, $t$ and $\gamma$ are parameters that have to be tune.
+								$\lambda$, $t$ and $\gamma$ are parameters that have to be tuned.
 								Finally, points classified as occluded are warped back to obtain an occlusion mask.
 							</p>
 						</li>
@@ -923,7 +923,7 @@
 						<li><a href="https://www.cvlibs.net/datasets/kitti/">KITTI</a> 142 Split (error rate > 3)</li>
 					</ul>
 					<p style="text-align: justify;">
-						Even without any additional training, our framework boost accuracy of any model with rare exceptions.
+						Even without any additional training, our framework boosts accuracy of any model with rare exceptions.
 					</p>
 				</td>
 			</tr>
