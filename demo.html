@@ -1,0 +1,1083 @@
+<html>
+	<head>
+	<script src="https://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+	
+	
+	<style type="text/css">
+		body {
+			font-family: 'Noto Sans', sans-serif;
+			color: #4a4a4a;
+			font-size: 1em;
+			font-weight: 400;
+			line-height: 1.5;
+			margin-left: auto;
+			margin-right: auto;
+			width: 1100px;
+		}
+	
+		.title {
+			color: #363636;
+			font-size: 4rem;
+			line-height: 1.125;
+			font-weight: 200;
+			font-family: 'Google Sans', sans-serif;
+		}
+	
+		.publication-title {
+			font-family: 'Google Sans', sans-serif;
+		}
+	
+		h1 {
+			font-size: 40px;
+			font-weight: 500;
+		}
+	
+		h2 {
+			font-size: 35px;
+			font-weight: 300;
+		}
+	
+		h3 {
+			font-size: 1px;
+			font-weight: 300;
+		}
+	
+		.subtitle,
+		.title {
+			word-break: break-word;
+		}
+	
+		.title.is-2 {
+			font-size: 4rem;
+			font-weight: 400;
+		}
+	
+		.title.is-3 {
+			font-size: 2.5rem;
+			font-weight: 400;
+		}
+	
+		.content h2 {
+			font-weight: 600;
+			font-family: 'Noto Sans', sans-serif;
+			line-height: 1.125;
+		}
+	
+		.disclaimerbox {
+			background-color: #eee;
+			border: 1px solid #eeeeee;
+			border-radius: 10px;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+			padding: 20px;
+		}
+	
+		video.header-vid {
+			height: 140px;
+			border: 1px solid rgba(0, 0, 0, 0.212);
+			border-radius: 10px;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+		}
+	
+		img.header-img {
+			height: 140px;
+			border: 1px solid black;
+			border-radius: 10px;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+		}
+	
+		img.rounded {
+			border: 1px solid #eeeeee;
+			border-radius: 10px;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+		}
+	
+		a:link,
+		a:visited {
+			color: #2994c5;
+			text-decoration: none;
+		}
+	
+		a:hover {
+			color: #0e889e;
+		}
+	
+		td.dl-link {
+			height: 160px;
+			text-align: center;
+			font-size: 22px;
+		}
+	
+		.layered-paper-big {
+			/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+			box-shadow:
+				0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The top layer shadow */
+				5px 5px 0 0px #fff,
+				/* The second layer */
+				5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The second layer shadow */
+				10px 10px 0 0px #fff,
+				/* The third layer */
+				10px 10px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The third layer shadow */
+				15px 15px 0 0px #fff,
+				/* The fourth layer */
+				15px 15px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The fourth layer shadow */
+				20px 20px 0 0px #fff,
+				/* The fifth layer */
+				20px 20px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The fifth layer shadow */
+				25px 25px 0 0px #fff,
+				/* The fifth layer */
+				25px 25px 1px 1px rgba(0, 0, 0, 0.35);
+			/* The fifth layer shadow */
+			margin-left: 10px;
+			margin-right: 45px;
+		}
+	
+		.paper-big {
+			/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+			box-shadow:
+				0px 0px 1px 1px rgba(0, 0, 0, 0.35);
+			/* The top layer shadow */
+	
+			margin-left: 10px;
+			margin-right: 45px;
+		}
+	
+		.button.is-dark {
+			background-color: #363636;
+			border-color: transparent;
+			color: #fff;
+		}
+	
+		.button.is-rounded {
+			border-radius: 290486px;
+			padding-left: calc(1em + .25em);
+			padding-right: calc(1em + .25em);
+		}
+	
+		.button.is-normal {
+			font-size: 1rem;
+		}
+	
+		.button .icon,
+		.button .icon.is-large,
+		.button .icon.is-medium,
+		.button .icon.is-small {
+			height: 1.5em;
+			width: 1.5em;
+		}
+	
+		.icon {
+			align-items: center;
+			display: inline-flex;
+			justify-content: center;
+			height: 1.5rem;
+			width: 1.5rem;
+		}
+	
+		.button.is-normal {
+			font-size: 1rem;
+		}
+	
+		.button {
+			background-color: #fff;
+			border-color: #dbdbdb;
+			border-width: 1px;
+			color: #363636;
+			cursor: pointer;
+			justify-content: center;
+			padding-bottom: calc(.5em - 1px);
+			padding-left: 1em;
+			padding-right: 1em;
+			padding-top: calc(.5em - 1px);
+			text-align: center;
+			white-space: nowrap;
+		}
+	
+		.button .icon:first-child:not(:last-child) {
+			margin-left: calc(-.5em - 1px);
+			margin-right: .25em;
+		}
+		
+		.button.is-rounded {
+			border-radius: 290486px;
+			padding-left: calc(1em + .25em);
+			padding-right: calc(1em + .25em);
+		}
+	
+		.button.is-normal {
+			font-size: 1rem;
+		}
+	
+		.button.is-dark {
+			background-color: #363636;
+			border-color: transparent;
+			color: #fff;
+		}
+	
+		.link-block a {
+			margin-top: 15px;
+			margin-bottom: 15px;
+		}
+	
+		.button {
+			background-color: #fff;
+			border-color: #dbdbdb;
+			border-width: 1px;
+			color: #363636;
+			cursor: pointer;
+			justify-content: center;
+			padding-bottom: calc(.5em - 1px);
+			padding-left: 1em;
+			padding-right: 1em;
+			padding-top: calc(.5em - 1px);
+			text-align: center;
+			white-space: nowrap;
+		}
+	
+		.button,
+		.file-cta,
+		.file-name,
+		.input,
+		.pagination-ellipsis,
+		.pagination-link,
+		.pagination-next,
+		.pagination-previous,
+		.select select,
+		.textarea {
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			align-items: center;
+			border: 1px solid transparent;
+			border-top-color: transparent;
+			border-top-width: 1px;
+			border-right-color: transparent;
+			border-right-width: 1px;
+			border-bottom-color: transparent;
+			border-bottom-width: 1px;
+			border-left-color: transparent;
+			border-left-width: 1px;
+			border-radius: 4px;
+			box-shadow: none;
+			display: inline-flex;
+			font-size: 1rem;
+			height: 2.5em;
+			justify-content: flex-start;
+			line-height: 1.5;
+			padding-bottom: calc(.5em - 1px);
+			padding-left: calc(.75em - 1px);
+			padding-right: calc(.75em - 1px);
+			padding-top: calc(.5em - 1px);
+			position: relative;
+			vertical-align: top;
+		}
+	
+		.breadcrumb,
+		.button,
+		.delete,
+		.file,
+		.is-unselectable,
+		.modal-close,
+		.pagination-ellipsis,
+		.pagination-link,
+		.pagination-next,
+		.pagination-previous,
+		.tabs {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+	
+		a {
+			color: #3273dc;
+			cursor: pointer;
+			text-decoration: none;
+		}
+	
+		a {
+			color: #007bff;
+			text-decoration: none;
+			background-color: transparent;
+		}
+	
+		*,
+		::after,
+		::before {
+			box-sizing: inherit;
+		}
+	
+		*,
+		::before,
+		::after {
+			box-sizing: border-box;
+		}
+	
+		span {
+			font-style: inherit;
+			font-weight: inherit;
+		}
+	
+		.layered-paper {
+			/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+			box-shadow:
+				0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The top layer shadow */
+				5px 5px 0 0px #fff,
+				/* The second layer */
+				5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The second layer shadow */
+				10px 10px 0 0px #fff,
+				/* The third layer */
+				10px 10px 1px 1px rgba(0, 0, 0, 0.35);
+			/* The third layer shadow */
+			margin-top: 5px;
+			margin-left: 10px;
+			margin-right: 30px;
+			margin-bottom: 5px;
+		}
+	
+		.vert-cent {
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	
+		hr {
+			border: 0;
+			height: 1px;
+			background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+		}
+	</style>
+	
+	<title>Stereo-Depth Fusion through Virtual Pattern Projection</title>
+	<meta property="og:image" content="./assets/teaser_vpp_v2.png" />
+	<!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="Stereo-Depth Fusion through Virtual Pattern Projection " />
+	<meta property="og:url" content="https://vppstereo.github.io/extension.html">
+	<!-- Get from Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src=""></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-75863369-6');
+	</script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	<script type="text/javascript"
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+	<!-- <script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+	</script> -->
+
+</head>
+
+<body>
+	<br>
+	<center>
+		<h1 class="title is-1 publication-title" style="margin-bottom: 0"><strong>Robust depth perception through Virtual Pattern Projection</strong></h1>
+		<!-- <h2 class="title is-2 publication-title" style="margin-top: 0; margin-bottom: 0">3D from multi-view and sensors
+		</h2> -->
+		<br>
+		<h3 class="title is-3 publication-title" style="margin-top: 0; margin-bottom: 0">CVPR 2024 DEMO</h3>
+		<br>
+		<table align=center width="1100px">
+			<table align=center width="1000px">
+				<tr>
+					<td align=center width="180px">
+						<center>
+							<span style="font-size:25px"><a href="https://bartn8.github.io/">Luca
+									Bartolomei</a></span>
+						</center>
+					</td>
+					<td align=center width="150px">
+						<center>
+							<span style="font-size:25px"><a href="https://mattpoggi.github.io/">Matteo
+									Poggi</a></span>
+						</center>
+					</td>
+					<td align=center width="150px">
+						<center>
+							<span style="font-size:25px"><a href="https://fabiotosi92.github.io/">Fabio
+									Tosi</a></span>
+						</center>
+					</td>
+					<td align=center width="150px">
+						<center>
+							<span style="font-size:25px"><a href="https://andreaconti.github.io/">Andrea
+									Conti</a></span>
+						</center>
+					</td>
+					<td align=center width="180px">
+						<center>
+							<span style="font-size:25px"><a
+									href="http://vision.deis.unibo.it/~smatt/Site/Home.html">Stefano
+									Mattoccia</a></span>
+						</center>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<table align=center width="750px">
+				<table align=center width="750px">
+					<tr>
+						<td align=center width="200px">
+							<center>
+								<span style="font-size:22px">University of Bologna</span>
+							</center>
+						</td>
+					</tr>
+				</table>
+
+				<span class="link-block">
+					<a href="index.html" class="external-link button is-normal is-rounded is-dark"
+						style="background-color:#000000;">
+						<span class="icon">
+							<svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false"
+								data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 384 512" data-fa-i2svg="">
+								<path fill="currentColor"
+									d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z">
+								</path>
+							</svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+						</span>
+						<span>ICCV23 Paper</span>
+					</a>
+				</span>
+
+				<!-- PDF Link. -->
+				<span class="link-block">
+					<a href="extension.html" class="external-link button is-normal is-rounded is-dark"
+						style="background-color:#000000;">
+						<span class="icon">
+							<svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false"
+								data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 384 512" data-fa-i2svg="">
+								<path fill="currentColor"
+									d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z">
+								</path>
+							</svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+						</span>
+						<span>Journal Paper</span>
+					</a>
+				</span>
+
+
+				<span class="link-block">
+					<a href="#myvideo" class="external-link button is-normal is-rounded is-dark"
+						style="background-color:#000000;">
+						<span class="icon">
+							<svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" focusable="false"
+								data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 576 512" data-fa-i2svg="">
+								<path fill="currentColor"
+									d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
+								</path>
+							</svg>
+						</span>
+						<span>Video</span>
+					</a>
+				</span>
+
+				<!-- Code Link. -->
+				<span class="link-block">
+					<a href="https://github.com/bartn8/cvpr24-demo/" class="external-link button is-normal is-rounded is-dark"
+						style="background-color:#000000;">
+						<span class="icon">
+							<svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false"
+								data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 496 512" data-fa-i2svg="">
+								<path fill="currentColor"
+									d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+								</path>
+							</svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+						</span>
+						<span>Code</span>
+					</a>
+				</span>
+
+				<!-- PDF Link. -->
+				<span class="link-block">
+					<a href="assets/demo/DEMO_CVPR_2024_LARGE.pdf" class="external-link button is-normal is-rounded is-dark"
+						style="background-color:#000000;">
+						<span class="icon">
+							<svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false"
+								data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 384 512" data-fa-i2svg="">
+								<path fill="currentColor"
+									d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z">
+								</path>
+							</svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+						</span>
+						<span>Flyer</span>
+					</a>
+				</span>
+
+			</table>
+	</center>
+	<br>
+	<center>
+		<table align=center width="1000px">
+			<tr>
+				<td>
+					<center>
+						<img class="round" width="1000px" src="./assets/extension/teaser_vpp_v3.jpg" />
+					</center>
+				</td>
+			</tr>
+		</table>
+		<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+			<tr>
+				<td>
+					<p style="text-align: justify;">
+						<strong>Virtual Pattern Projection for deep stereo.</strong> Either in challenging outdoor (top) or indoor (bottom) environments (a), stereo networks like <a href="https://github.com/princeton-vl/RAFT-Stereo">RAFT-Stereo</a> (top) or PSMNet (bottom) struggle (b). By projecting a virtual pattern on images (c), the same networks dramatically improve their accuracy without retraining (d). Training the models to deal with the augmented images (e) further reduces errors.
+					</p>
+				</td>
+			</tr>
+		</table>
+	</center>
+
+	<br>
+	<br>
+
+	<hr>
+
+	<center>
+		<h1>3D Model</h1>
+	</center>
+
+
+	<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+		<tr>
+			<td>
+				<model-viewer src="assets/demo/CVRP-DEMO-SLIDE v2.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="assets/demo/poster.webp" shadow-intensity="1">
+					<div class="progress-bar hide" slot="progress-bar">
+						<div class="update-bar"></div>
+					</div>
+					<button slot="ar-button" id="ar-button">
+						View in your space
+					</button>
+					<div id="ar-prompt">
+						<img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+					</div>
+				</model-viewer>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+	<hr>
+
+	<center>
+		<h1>Abstract</h1>
+	</center>
+
+	<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+		<tr>
+			<td>
+				<p style="text-align: justify;">
+					<i>
+						"The demo aims to showcase a novel matching paradigm, proposed at <a href="https://arxiv.org/abs/2309.12315">ICCV 2023</a>, based on projecting virtual patterns onto conventional stereo pairs according to the sparse depth points gathered by a depth sensor to achieve robust and dense depth estimation at the resolution of the input images.
+						Such a virtual hallucination strategy can be seamlessly used with any algorithm or deep network for stereo correspondence, dramatically improving the performance of the baseline methods.
+						In contrast to active stereo systems based on a conventional pattern projector (e.g., Intel Realsense or OAK-D Pro stereo cameras), our proposal acts on the vanilla RGB images, is effective at any distance, even with sunlight, and does not require additional IR/RGB cameras nor a physical IR pattern projector.
+						Moreover, the virtual projection paradigm can be used even for other tasks, such as depth completion, as proposed at <a href="https://arxiv.org/abs/2312.09254">3DV 2024</a>.
+						We will showcase to the CVPR community how flexible and effective the virtual pattern projection paradigm is through a real-time demo based on off-the-shelf cameras and depth sensors.
+						Specifically, we will demonstrate the advantage yielded by our proposal for stereo, through a live real-time session on a Jetson Nano connected to a commercial stereo camera (i.e., OAK-D camera) and an depth sensor (i.e., Realsense LiDAR L515).
+						This setup will also allow us to explain thoroughly, with a live demonstration, the principle and the outcome of our virtual hallucination strategy on the vanilla images acquired by the camera in the task mentioned above.  
+						"
+					</i>
+				</p>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<hr>
+
+	<!-- Video section -->
+	<center>
+		<h1>Video</h1>
+	</center>
+	<table align=center width="1000px">
+		<tr>
+			<td align=center width="1000px">
+				<center>
+					<!--<iframe width="1000px" height="650" src="#" frameborder="0"
+						allowfullscreen></iframe>-->
+					<!--<img src="assets/slide_title.jpg" width="1000px" />-->
+					<video id="myvideo" width="1000px" controls preload="metadata">
+						<source src="assets/demo/CVPR24DEMO.mp4" type="video/mp4">
+						<track
+						label="English"
+						kind="captions"
+						srclang="en"
+						src="assets/demo/CVPR24DEMO.mp4.vtt"
+						default />
+
+						Your browser does not support the video tag.
+					</video>
+				</center>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+	<br>
+	<hr>
+
+	<center>
+		<h1>Method</h1>
+	</center>
+	
+	<br>
+
+
+	<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+		<center>
+			<tr>
+				<td>
+					<h2> 1 - Problems</h2>
+					<ol>
+						<li>
+							<p style="text-align: justify;">Given a pair of stereo images, stereo algorithms try to resolve the so called "correspondence problem".
+								This problem is not always easy: uniform areas such as the wall shown in the figure make the problem ambiguous.
+								Furthermore, given learning nature of stereo networks, they suffer when dealing with unseen scenarios.
+								This latter problem is also called domain shift.</p>
+							<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+								<tr>
+									<td><img src="assets/vanilla_midd21.png" width="495px" /></td>
+									<td><img src="assets/vanilla_midd21_cfnet.png" width="495px" /></td>
+								</tr>
+							</table>
+							<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+								<tr>
+									<td>
+										<p style="text-align: justify;">
+											<strong>Performance on uniform areas.</strong> Even <a href="https://github.com/gallenszl/CFNet">recent stereo network</a> struggles with uniform areas.
+										</p>
+									</td>
+								</tr>
+							</table>
+						</li>
+						<li>
+							<p style="text-align: justify;">
+								Active stereo deal with ambiguous regions using a physical pattern projector which aims to ease correspondences.
+								However, a pattern projector is not feasible in outdoor scenarios where ambient light cancel out the projected pattern.
+								Furthermore, active light decreases proportionally to the square of the distance: consequentially active stereo cannot deal with long distances.
+							</p>
+							<center>
+								<img src="assets/active_pattern.gif" width="1000px" />
+							</center>
+							<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+								<tr>
+									<td>
+										<p style="text-align: justify;">
+											<strong>Performance of active pattern.</strong> Even in a indoor scenario, active light decreases proportionally to the square of the distance. As soon as we move in an external environment, the projected light is dimmed by the external light.
+										</p>
+									</td>
+								</tr>
+							</table>
+						</li>
+					</ol>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h2> 2 - Proposal</h2>
+					<ol>
+						<li>
+							<!-- <p style="text-align: justify;">We project a virtual pattern (VPP) on stereo image pair according to sparse depth measurements given by a depth sensor</p> -->
+							<p style="text-align: justify;">
+								Inspired by active stereo, our technique, dubbed as <strong>VPP</strong>, virtually project a pattern into stereo image pair according to sparse depth measurements.
+								We assume a calibrated setup composed by stereo camera and a depth sensor appropriate for the final environment.
+							</p>
+							<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+								<tr>
+									<td><img src="assets/vpp_midd21.png" width="495px" /></td>
+									<td><img src="assets/vpp_midd21_cfnet.png" width="495px" /></td>
+								</tr>
+							</table>
+							<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+								<tr>
+									<td>
+										<p style="text-align: justify;">
+											<strong>Potential of our proposal.</strong> 
+											<a href="https://github.com/gallenszl/CFNet">Previous shown network</a>, even trained on synthetic data, dramatically improves its accuracy when coupled with our framework, even with few sparse points.
+										</p>
+									</td>
+								</tr>
+							</table>
+							<br>
+							<center>
+								<img src="assets/vanilla_kitti.png" width="1000px" />
+								<img src="assets/vpp_kitti.png" width="1000px" />
+							</center>
+							<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+								<tr>
+									<td>
+										<p style="text-align: justify;">
+											<strong>Appropriate depth sensor choice.</strong> 
+											LiDAR sensor is well suited for outdoor environments.
+										</p>
+									</td>
+								</tr>
+							</table>
+						</li>
+						<!-- <li>
+							<p style="text-align: justify;">This virtual active stereo setup works in any environment if coupled with an appropriate depth sensor</p>
+						</li> -->
+						<li>
+							<!-- <p style="text-align: justify;">Even with few points (e.g., 1% of the whole image), our proposal outperforms SOTA fusion methods​</p> -->
+							<p style="text-align: justify;">
+								Our proposal outperforms state-of-the-art fusion methods even with few depth points such as 1% of the whole image.
+								Finally, as shown in the figure, virtual pattern reduce domain shift issue without requiring an additional training procedure.
+							</p>
+							<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em; text-align: center; ">
+								<tr>
+									<td><img src="assets/vanilla_midd21_cfnet.png" width="330px" /></td>
+									<td><img src="assets/vanilla_midd21_cfnet_ft.png" width="330px" /></td>
+									<td><img src="assets/vpp_midd21_cfnet.png" width="330px" /></td>
+								</tr>
+								<tr>
+									<td>(A)</td>
+									<td>(B)</td>
+									<td>(C)</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><img src="assets/midd21_gt.png" width="330px" /></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>(D)</td>
+									<td></td>
+								</tr>
+							</table>
+							<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+								<tr>
+									<td>
+										<p style="text-align: justify;">
+											<strong>Appropriate depth sensor choice.</strong> 
+											<a href="https://github.com/gallenszl/CFNet">Previous shown network</a> trained on synthetic data struggles (A) when dealing on new environment.
+											Fine tuning the network in final scenario (B) improves accuracy but require annotated data. 
+											Using our framework in combination with <a href="https://github.com/gallenszl/CFNet">CFNet</a> shows an ability to tackle domain shift issues (C), even with low amount (5%) of  sparse points.
+											Last figure (D) shows ground-truth disparity map.
+										</p>
+									</td>
+								</tr>
+							</table>
+						</li>
+						<!-- <li>
+							<p style="text-align: justify;">When dealing with networks trained on synthetic data, it improves accuracy and shows an ability to tackle domain shift issues </p>
+						</li> -->
+					</ol>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h2> 3 - Virtual Pattern Projection</h2>
+					
+					<center>
+						<img class="round" width="1000px" src="./assets/extension/framework_new.jpg" />
+					</center>
+					<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+						<tr>
+							<td>
+								<p style="text-align: justify;">
+									<strong>Framework overview.</strong> 
+									Given a vanilla stereo pair of images from a stereo camera and sparse depth points from a depth sensor, our framework virtually projects depth seeds to stereo pair according to system geometry and a pattering strategy.
+								</p>
+							</td>
+						</tr>
+					</table>
+
+					<p style="text-align: justify;">
+						As for all fusion methods, our proposal relies on sparse depth seeds but, differentially from them, we inject sparse points directly into images using a virtual pattern.
+						For each known point, we convert depth into disparity then we apply a virtual pattern in each stereo image accordingly to a pattering strategy.
+					</p>
+
+					$$I_L(x,y) \leftarrow \mathcal{A}(x,x',y)$$
+					$$I_R(x',y) \leftarrow \mathcal{A}(x,x',y)$$
+
+					<p style="text-align: justify;">
+						Our method do not require any change or assumption in the stereo matcher: we assume it to be a black-box model that requires in input a pair of rectified stereo images and produce a disparity map.
+					</p>
+
+					<p style="text-align: justify;">Augmented stereo pair is less affected by ambiguous regions and makes stereo matcher work easier. Given that our framework alters only stereo pair, any stereo matcher could benefit from it. Since disparity seed could have subpixel accuracy, we use weighted splatting to avoid loss of information.</p>
+
+					$$I_R(\lfloor x'\rfloor,y) \leftarrow \beta I_R(\lfloor x'\rfloor,y) + (1-\beta) \mathcal{A}(x,x',y)$$
+					$$I_R(\lceil x'\rceil,y) \leftarrow (1-\beta) I_R(\lceil x'\rceil,y) + \beta \mathcal{A}(x,x',y)$$
+					$$\beta = x'-\lfloor x'\rfloor$$
+
+					<p style="text-align: justify;">We propose different pattering strategies to enhance distinctiveness and high correspondence, a patch-based approach to increase pattern visibility, alpha-blending with original content to deal with adversial issues with neural networks, a solution to ambiguous projection on occluded points and consequentially an heuristic to classify occluded sparse points. In particular:</p>
+					
+					<ul>
+						<li>
+							<p style="text-align: justify;">We propose two different pattering strategies: i) random pattering strategy and ii) distinctiveness pattering strategy based on histogram analysis.</p>
+							<ol type="i">
+								<li>
+									<p style="text-align: justify;">Our random strategy is faster than second proposed strategy, but do not guarantee distinctiveness: for each known pair of corresponding points a random pattern is applied in each view, sampling from an uniform distribution.</p>
+									$$\mathcal{A}(x,x',y)\sim\mathcal{U}(0,255)$$
+								</li>
+								<li>
+									<p style="text-align: justify;">Our histogram strategy performs an analysis in the neighbourood of each corresponding point to guarantee local distinctiveness.
+										For $(x,y)$ in the reference image, we consider two windows of length $L$ centered on it and on $(x',y)$ in the target image. Then, the histograms computed over the two windows are summed up and the operator $\mathcal{A}(x,x',y)$ picks the color maximizing the distance from any other color in the histogram $\text{hdist}(i)$, with $\text{hdist}(i)$ returning the minimum distance from a filled bin in the sum histogram $\mathcal{H}$</p>
+									$$\text{hdist}(i) =  \big\{\min\{ |i-i_l|,\,|i-i_r| \},i_l\in[0,i[:\mathcal{H}(i_l)>0,i_r\in]i,255]:\mathcal{H}(i_r)>0 \big\}$$
+								</li>
+							</ol>
+						</li>
+						<li>
+							<p style="text-align: justify;">Instead of projecting in two single corresponding pixels, a patch-based approach simply assume the same disparity value also for neighbour pixels.</p>
+							<center>
+								<img src="assets/patchbased.png" width="250px"/>
+							</center>
+						</li>
+                        <li>
+                            <p style="text-align: justify;">The patch can be shaped to fit the context using two strategies: distance based patch-size and RGB guided adaptive patch. The former assumes that things appear smaller in the images at farther distances: a large virtual patch might cover most of a small object when it is far from camera, preventing the stereo algorithm from inferring its possibly different disparity values. Considering a disparity hint $d(x,y)$, a disparity search range $\left[ D_\text{min}, D_\text{max} \right]$, and a maximum patch size $N_\text{max}$, we adjust the patch size $N(x,y)$ as follows:</p>
+                            $$N(x,y) = \text{round}\left( \left(\frac{d(x,y)-D_\text{min}}{D_\text{max}-D_\text{min}}\right)^{\frac{1}{\phi}} \cdot \left( N_\text{max}-1 \right)  + 1  \right)$$
+                            <p style="text-align: justify;">where $\phi$ models the mapping curve and $D_\text{min}, D_\text{max}$ are given respectively by the nearest and the farthest hint in the frame.</p>
+                            <p style="text-align: justify;">Regardless of the distance from the camera, a fixed patch shape becomes problematic near depth discontinuities and with thin objects. As detailed next, following <a href="https://vppdc.github.io/">Bartolomei et al.</a> we adapt the patch shape according to the reference image content to address this challenge. Given a local window $\mathcal{N}(x,y)$ centered around the disparity hint $d(x,y)$, for each pixel $(u,v)\in\mathcal{N}(x,y)$ we estimate the spatial $S(x,y,u,v)=(x-u)^2+(y-v)^2$ and color $C(x,y,u,v)=\left|I_L(u,v)-I_L(x,y)\right|$ agreement with the reference hint point $(x,y)$ and feed them into model $W_\text{c}(x,y,u,v)$:</p>
+                            $$W_\text{c}(x,y,u,v)=\exp\left(\frac{S(x,y,u,v)}{-2\sigma_s^2}+\frac{C(x,y,u,v)}{-2\sigma_c^2}\right)$$
+                            <p style="text-align: justify;">where $\sigma_s$ and $\sigma_c$ control the impact of the spatial and color contribution as in a bilateral filter.  For each pixel $(u,v)$ within a patch centred in $(x,y)$, we apply the virtual projection only if $W(x,y,u,v)$ exceeds a threshold $t_w$.                          Additionally, we store $W(x,y,u,v)$ values in a proper data structure to handle overlapping pixels between two or more patches -- i.e., we perform virtual projection only for the pixel with the highest score.</p>
+                        </li>
+						<li>
+							<p style="text-align: justify;">A virtual pattern might hinder a deep stereo model not used to deal with it. Thus, we combine the original image content with the virtual pattern through alpha-blending.</p>
+							$$I_L(x,y) \leftarrow (1-\alpha) I_L(x,y) + \alpha \mathcal{A}(x,x',y)$$
+							$$I_R(x',y) \leftarrow (1-\alpha) I_R(x',y) + \alpha \mathcal{A}(x,x',y)$$
+						</li>
+						<li>
+							<p style="text-align: justify;">
+								Occlusions are an intrinsic product of the stereo system as each view see the scene in a different perspective.
+								In particular, known depth seeds that are visible in reference view, but occluded in target view could lead to ambiguities.
+							</p>
+							<center>
+								<img class="round" width="750px" src="./assets/occlusion_example.jpg" />
+							</center>
+							<p style="text-align: justify;">
+								In this example, known point P is virtually projected accordingly to a pattering strategy.
+								However, as P is occluded in target view, the virtual projection covers original foreground content Q. Consequentially, foreground point has no longer a clear match.
+								If we can classify correctly P as occluded, we can exploit the potential of our proposal.
+								Instead of projecting a pattern that would cover foreground content, we can virtually project target content of Q into reference pixel of P.
+								This solution ease the correspondence for P and do not interfere with foreground pixel.
+								We propose a simple heuristic to classify occluded sparse disparity points.
+							</p>
+							<center>
+								<img class="round" width="500px" src="./assets/occlusion_example2.jpg" />
+							</center>
+							<p style="text-align: justify;">
+								Considering the target view, it assumes at least one foreground sparse point in the neighborhood of the occluded sparse point.
+								In this example P and Q are known overlapping points in target view, while in reference view they are distinct points.
+								We aim to classify P as occluded.
+							</p>
+							<center>
+								<img class="round" width="900px" src="./assets/occlusion_example3.jpg" />
+							</center>
+							<p style="text-align: justify;">
+								Firstly, given a sparse disparity map obtained using depth sensor, we warp each point at coordinate $(x, y)$ into an image-like grid $W$ at coordinate $(x',y)$.
+								In this representation sparse points are seen from target view perspective: foreground and occluded points are now closer to each other.
+								Each valid sparse point $W(x_o,y_o)$ is classified as occluded if the following inequality holds for at least one neighbor $W(x,y)$ within a 2D window of size $r_x \times r_y$.
+							</p>
+							$$ W(x,y)-W(x_o,y_o) - \lambda (\gamma\lvert x-x_o \rvert + (1-\gamma) \lvert y-y_o \rvert ) > t$$
+							<p style="text-align: justify;">
+								This inequality simply threshold difference between disparity of two points and weight it accordingly to coordinate distance.
+								$\lambda$, $t$ and $\gamma$ are parameters that have to be tuned.
+								Finally, points classified as occluded are warped back to obtain an occlusion mask.
+							</p>
+						</li>
+					</ul>
+
+                    <center>
+                        <img src="assets/extension/qualitativo_vpp.jpg" width="1000px"/>
+                    </center>
+                    <table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+                        <tr>
+                            <td>
+                                <p style="text-align: justify;">
+                                    <strong>VPP in action.</strong> 
+                                    Hallucinated stereo pair using pattern (vi); zoomed-in view with FGD-Projection (a), corresponding area (b) with sub-pixel splatting and left border occlusion projection (c). Adaptive patches guarantee the preservation of depth discontinuities and thin details (d).
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+
+				</td>
+			</tr>
+		</center>
+	</table>
+
+	<br>
+	<br>
+	<hr>
+
+	<center>
+		<h1>Experimental Results</h1>
+	</center>
+
+	<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+		<center>
+			<tr>
+				<td>
+					<h2>Performance versus Competitors</h2>
+					<center>
+						<img src="assets/extension/curva_densita_psmnet_final.png" width="1000px"/>
+						<img src="assets/extension/curva_densita_raft_final.png" width="1000px"/>
+					</center>
+					<p style="text-align: justify;">
+						Plots show the error rate on Middlebury 2014 training split, varying density of sparse hint points from 0% to 5%.
+						We compare two stereo networks together with our VPP framework against:
+					</p>
+					<ul>
+						<li>The very same two networks in conjunction with Guided Stereo Matching framework</li>
+						<li>LidarStereoNet</li>
+						<li>CCVNorm</li>
+					</ul>
+
+					<p style="text-align: justify;">
+						As shown in the figures, VPP generally reaches almost optimal performance with only 1% depth density.
+						Except few cases in the training configurations with some higher density, VPP achieves much lower error rates.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<br>
+					<h2>VPP with off-the-shelf networks</h2>
+					<center>
+						<img src="assets/plots.png" width="1000px"/>
+					</center>
+					<p style="text-align: justify;">
+						These last plots show the effectiveness of our technique using off-the-shelf networks  (i.e., <a href="https://github.com/gengshan-y/high-res-stereo">HSMNet</a>, <a href="https://github.com/gallenszl/CFNet">CFNet</a>, <a href="https://github.com/megvii-research/CREStereo">CREStereo</a>, <a href="https://github.com/princeton-vl/RAFT-Stereo">RAFT-Stereo</a>) on four different datasets:
+					</p>
+					<ul>
+						<li><a href="https://vision.middlebury.edu/stereo/data/scenes2014/">Middlebury 2014</a> training split (error rate > 2)</li>
+						<li><a href="https://vision.middlebury.edu/stereo/data/scenes2021/">Middlebury 2021</a> (error rate > 2)</li>
+						<li><a href="https://www.eth3d.net/">ETH3D</a> (error rate > 1)</li>
+						<li><a href="https://www.cvlibs.net/datasets/kitti/">KITTI</a> 142 Split (error rate > 3)</li>
+					</ul>
+					<p style="text-align: justify;">
+						Even without any additional training, our framework boosts accuracy of any model with rare exceptions.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<br>
+					<h2>Additional Evaluation with Raw Depth Data</h2>
+                    <center>
+                        <img src="assets/extension/dsec_night.png" width="1000px"/>
+                    </center>
+                    <table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+                        <tr>
+                            <td>
+                                <p style="text-align: justify;">
+                                    <strong>Qualitative result on DSEC night split.</strong> 
+                                    Passive stereo networks (e.g., <a href="https://github.com/XuelianCheng/LEAStereo">LEAStereo</a> and <a href="https://github.com/gallenszl/PCWNet">PCWNet</a>) often fail when dealing with low ambient light, while VPP allows perceiving even challenging objects, such as the far background walls.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <center>
+                        <img src="assets/extension/m3ed_day.png" width="1000px"/>
+                    </center>
+                    <table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+                        <tr>
+                            <td>
+                                <p style="text-align: justify;">
+                                    <strong>Qualitative result on M3ED day split.</strong> 
+                                    Both <a href="https://github.com/jimmy19991222/ELFNet">ELFNet</a> and <a href="https://github.com/ibaiGorordo/HITNET-Stereo-Depth-estimation">HITNet</a> struggle with large texture-less areas, for example, created by scenes with high dynamic range. Our framework can leverage sparse depth points to solve this issue, whereas projected patterns would be ineffective.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <center>
+                        <img src="assets/extension/dsec_night.png" width="1000px"/>
+                    </center>
+                    <table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+                        <tr>
+                            <td>
+                                <p style="text-align: justify;">
+                                    <strong>Qualitative result on SIMSTEREO.</strong> 
+                                    Some networks, such as <a href="https://github.com/David-Zhao-1997/High-frequency-Stereo-Matching-Network">DLNR</a>, often produce artefacts when fed with stereo pairs acquired with pattern projection active. In contrast, the same networks can seamlessly take advantage of our virtual patterns.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <center>
+                        <img src="assets/extension/m3ed_active.png" width="1000px"/>
+                    </center>
+                    <table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+                        <tr>
+                            <td>
+                                <p style="text-align: justify;">
+                                    <strong>Qualitative result on M3ED-Active.</strong> 
+                                    Virtual and physical projected patterns help to improve the accuracy of a recent stereo network (i.e., <a href="https://github.com/princeton-vl/RAFT-Stereo">RAFT-Stereo</a>) when dealing with large uniform areas.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>                                        
+                    <p style="text-align: justify;">
+						These last plots show the effectiveness of our technique using additional off-the-shelf networks (e.g., <a href="https://github.com/David-Zhao-1997/High-frequency-Stereo-Matching-Network">DLNR</a>, <a href="https://github.com/jimmy19991222/ELFNet">ELFNet</a>) on four additional passive/active raw datasets:
+					</p>
+					<ul>
+						<li><a href="https://m3ed.io/">M3ED</a> (error rate > 3)</li>
+						<li><a href="https://m3ed.io/">M3ED-Active</a> (error rate > 3)</li>
+						<li><a href="https://dsec.ifi.uzh.ch/">DSEC</a> (error rate > 3)</li>
+						<li><a href="https://ieee-dataport.org/open-access/active-passive-simstereo">SIMSTEREO</a> (error rate > 1)</li>
+					</ul>
+					<p style="text-align: justify;">
+						Even without any additional training, our framework boosts accuracy of any model with rare exceptions.
+					</p>
+				</td>
+			</tr>            
+		</center>
+	</table>
+
+
+	<br>
+	<hr>
+
+	<div class="container is-max-desktop content">
+		<h2 class="bibtex" style="font-size:32px; font-weight:400;">BibTeX</h2>
+		<pre style="background-color: #f5f5f5; color: #4a4a4a; font-size: 1.5em; overflow-x: auto;"><code >@InProceedings{Bartolomei_2023_ICCV,
+		    author    = {Bartolomei, Luca and Poggi, Matteo and Tosi, Fabio and Conti, Andrea and Mattoccia, Stefano},
+		    title     = {Active Stereo Without Pattern Projector},
+		    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+		    month     = {October},
+		    year      = {2023},
+		    pages     = {18470-18482}
+		}</code></pre>
+		<pre style="background-color: #f5f5f5; color: #4a4a4a; font-size: 1.5em; overflow-x: auto;"><code >@misc{bartolomei2024stereodepth,
+            title={Stereo-Depth Fusion through Virtual Pattern Projection}, 
+            author={Luca Bartolomei and Matteo Poggi and Fabio Tosi and Andrea Conti and Stefano Mattoccia},
+            year={2024},
+            eprint={2406.04345},
+            archivePrefix={arXiv},
+            primaryClass={cs.CV}
+      }</code></pre>
+	</div>
+
+
+	<br>
+	<br>
+	<hr>
+
+
+	<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</body>
+
+</html>
