@@ -450,7 +450,7 @@
 				</table>
 
 				<span class="link-block">
-					<a href="index.html" class="external-link button is-normal is-rounded is-dark"
+					<a href="index.html?no_redirect=true" class="external-link button is-normal is-rounded is-dark"
 						style="background-color:#000000;">
 						<span class="icon">
 							<svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false"
@@ -535,14 +535,19 @@
 
 			</table>
 	</center>
+	
 	<br>
+	<hr>
+
 	<center>
-		<table align=center width="1000px">
+		<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
 			<tr>
 				<td>
-					<center>
-						<img class="round" width="1000px" src="./assets/extension/teaser_vpp_v3.jpg" />
-					</center>
+					<model-viewer src="assets/demo/CVRP-DEMO-SLIDE v2.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="assets/demo/poster.webp" shadow-intensity="1">
+						<div class="progress-bar hide" slot="progress-bar">
+							<div class="update-bar"></div>
+						</div>
+					</model-viewer>
 				</td>
 			</tr>
 		</table>
@@ -550,34 +555,12 @@
 			<tr>
 				<td>
 					<p style="text-align: justify;">
-						<strong>Virtual Pattern Projection for deep stereo.</strong> Either in challenging outdoor (top) or indoor (bottom) environments (a), stereo networks like <a href="https://github.com/princeton-vl/RAFT-Stereo">RAFT-Stereo</a> (top) or PSMNet (bottom) struggle (b). By projecting a virtual pattern on images (c), the same networks dramatically improve their accuracy without retraining (d). Training the models to deal with the augmented images (e) further reduces errors.
+						<strong>Our prototype at CVPR 2024.</strong> We built a functional prototype composed of an OAK-D lite stereo camera with a built-in Stereo matching algorithm and an Intel RealSense L515 LiDAR as the sparse depth sensor. OAK-D Lite and L515 are rigidly fixed using a handmade alluminium support to guarantee a stable calibration over time.​
 					</p>
 				</td>
 			</tr>
 		</table>
 	</center>
-
-	<br>
-	<br>
-
-	<hr>
-
-	<center>
-		<h1>3D Model</h1>
-	</center>
-
-
-	<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
-		<tr>
-			<td>
-				<model-viewer src="assets/demo/CVRP-DEMO-SLIDE v2.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="assets/demo/poster.webp" shadow-intensity="1">
-					<div class="progress-bar hide" slot="progress-bar">
-						<div class="update-bar"></div>
-					</div>
-				</model-viewer>
-			</td>
-		</tr>
-	</table>
 
 	<br>
 	<hr>
@@ -604,8 +587,67 @@
 			</td>
 		</tr>
 	</table>
+
 	<br>
 
+	<hr>
+
+	<!-- Details section -->
+	<center>
+		<h1>The Prototype</h1>
+	</center>
+	<table align=center width="1000px">
+		<tr>
+			<td align=center width="1000px">
+				<center>
+					<img class="round" width="1000px" src="./assets/demo/Slide8.jpg" />
+				</center>
+				<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+					<tr>
+						<td>
+							<p style="text-align: justify;">
+								<strong>Calibration of sensors.</strong> We managed to calibrate the setup using a <a href="https://docs.opencv.org/4.4.0/d9/d0c/group__calib3d.html#ga91018d80e2a93ade37539f01e6f07de5:~:text=%E2%97%86-,stereoCalibrate,-()%20%5B1/2">standard chessboard calibration algorithm</a> between the IR camera of L515 and the left camera of OAK-D Lite.​ L515 and OAK-D share the same clock of the host machine and are time synchronized using the nearest timestamp algorithm. Kudos to bachelor student Nicole Ferrari for the algorithm implementation.​
+							</p>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align=center width="1000px">
+				<center>
+					<img class="round" width="1000px" src="./assets/demo/Slide9.jpg" />
+				</center>
+				<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+					<tr>
+						<td>
+							<p style="text-align: justify;">
+								<strong>Reprojection of sparse depth points.</strong> Firstly, the Intel Realsense L515 captures sparse depth points with high confidence.​ The resulting sparse depth map is reprojected from the L515 reference frame to the OAK-D left camera using the rigid transformation previously found using the chessboard calibration algorithm.​
+							</p>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align=center width="1000px">
+				<center>
+					<img class="round" width="1000px" src="./assets/demo/Slide17.jpg" />
+				</center>
+				<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+					<tr>
+						<td>
+							<p style="text-align: justify;">
+								<strong>Robust and vanilla depth estimation.</strong> The vanilla pair of stereo images are fed into the OAK-D <a href="https://docs.luxonis.com/software/depthai-components/nodes/stereo_depth">StereoDepth module</a> to obtain a vanilla depth estimation. The vanilla pair is also fed into our VPP module which produces two enhanced stereo images in a fraction of a second.​ These VPP images are fed again into the OAK-D stereo algorithm to obtain a robust depth estimation. Our graphical interface permits us to show the benefits of our proposal in critical areas such as textureless regions with respect to the vanilla passive stereo.​
+							</p>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+
+	<br>
 	<hr>
 
 	<!-- Video section -->
@@ -640,9 +682,32 @@
 	<hr>
 
 	<center>
-		<h1>Method</h1>
+		<h1>Virtual Pattern Projection (VPP)</h1>
 	</center>
 	
+	<br>
+
+	<center>
+		<table align=center width="1000px">
+			<tr>
+				<td>
+					<center>
+						<img class="round" width="1000px" src="./assets/extension/teaser_vpp_v3.jpg" />
+					</center>
+				</td>
+			</tr>
+		</table>
+		<table align=center width="1000px" style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+			<tr>
+				<td>
+					<p style="text-align: justify;">
+						<strong>Virtual Pattern Projection for deep stereo.</strong> Either in challenging outdoor (top) or indoor (bottom) environments (a), stereo networks like <a href="https://github.com/princeton-vl/RAFT-Stereo">RAFT-Stereo</a> (top) or PSMNet (bottom) struggle (b). By projecting a virtual pattern on images (c), the same networks dramatically improve their accuracy without retraining (d). Training the models to deal with the augmented images (e) further reduces errors.
+					</p>
+				</td>
+			</tr>
+		</table>
+	</center>
+
 	<br>
 
 
@@ -790,7 +855,7 @@
 			</tr>
 			<tr>
 				<td>
-					<h2> 3 - Virtual Pattern Projection</h2>
+					<h2> 3 - Proposed Framework (VPP)</h2>
 					
 					<center>
 						<img class="round" width="1000px" src="./assets/extension/framework_new.jpg" />
